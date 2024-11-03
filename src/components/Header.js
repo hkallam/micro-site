@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
-import { FaHome, FaLeaf, FaShoppingCart, FaBars, FaCalendar, FaInfo, FaInstagram, FaWhatsapp } from 'react-icons/fa';
+import { FaHome, FaLeaf, FaShoppingCart, FaBars, FaCalendar, FaInfo, FaInstagram, FaWhatsapp, FaPhone, FaSms } from 'react-icons/fa';
 
 function Header({ cartItemsCount }) {
   const [menuOpen, setMenuOpen] = useState(false);
@@ -17,8 +17,10 @@ function Header({ cartItemsCount }) {
           <FaBars />
         </button>
         <div className="social-icons">
-      <a href="https://instagram.com/folsommicrogreens" target="_blank" rel="noopener noreferrer"><FaInstagram /></a>
-      <a href="https://wa.me/12798427951" target="_blank" rel="noopener noreferrer"><FaWhatsapp /></a>
+          <a href="https://instagram.com/folsommicrogreens" target="_blank" rel="noopener noreferrer"><FaInstagram /></a>
+          <a href="https://wa.me/12798427951" target="_blank" rel="noopener noreferrer"><FaWhatsapp /></a>
+          <a href="tel:+12798427951" target="_blank" rel="noopener noreferrer"><FaPhone /></a>
+          <a href="sms:+12798427951" target="_blank" rel="noopener noreferrer"><FaSms /></a>
     </div>
       </div>
       <nav className={menuOpen ? 'open' : ''}>

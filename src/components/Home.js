@@ -19,7 +19,8 @@ function Home() {
   return (
     <div className="home">
       <h1>Locally Grown Microgreens</h1>
-      <p>We are a small, local business dedicated to growing fresh and organic microgreens. Our mission is to provide nutritious, high-quality greens to our community, delivered directly to your doorstep.</p>
+      <p>We are a small, local business dedicated to growing fresh microgreens. 
+        Our mission is to provide nutritious, high-quality greens to our community, delivered directly to your doorstep.</p>
       <Slider {...settings}>
         <div>
           <img src="images/broccoli.jpg" alt="First slide" />
