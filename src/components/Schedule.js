@@ -1,8 +1,10 @@
-// src/components/Schedule.js
 import React, { useState } from 'react';
 import { Calendar, momentLocalizer } from 'react-big-calendar';
 import moment from 'moment';
 import 'react-big-calendar/lib/css/react-big-calendar.css';
+import { Tooltip } from 'react-tooltip';
+import { FaSeedling, FaCut } from 'react-icons/fa';
+import './Schedule.css';
 
 // Set up the localizer for react-big-calendar
 const localizer = momentLocalizer(moment);
@@ -13,7 +15,6 @@ const microgreensData = [
   { name: 'Sunflower', sowDuration: 12, harvestDuration: 4, startDate: '2024-08-22' },
   { name: 'Beet', sowDuration: 12, harvestDuration: 4, startDate: '2024-08-25' },
   { name: 'Kale', sowDuration: 12, harvestDuration: 4, startDate: '2024-08-28' },
-  
 ];
 
 function Schedule() {
@@ -33,7 +34,8 @@ function Schedule() {
           start: currentDate.toDate(),
           end: currentDate.clone().add(1, 'day').toDate(),
           allDay: true,
-          resource: 'sowing'
+          resource: 'sowing',
+          tooltip: `Start sowing ${green.name}`,
         });
 
         // Harvesting event
@@ -44,7 +46,8 @@ function Schedule() {
           start: harvestStart.toDate(),
           end: harvestEnd.toDate(),
           allDay: true,
-          resource: 'harvesting'
+          resource: 'harvesting',
+          tooltip: `Ready to harvest ${green.name}`,
         });
 
         // Move to the next cycle
@@ -64,21 +67,33 @@ function Schedule() {
   const eventStyleGetter = (event) => {
     let style = {
       backgroundColor: event.resource === 'sowing' ? '#2c5e1a' : '#f39c12',
-      borderRadius: '0px',
-      opacity: 0.8,
       color: 'white',
-      border: '0px',
-      display: 'block'
+      borderRadius: '5px',
+      padding: '5px',
+      display: 'flex',
+      alignItems: 'center',
+      justifyContent: 'center',
+      cursor: 'pointer',
     };
-    return {
-      style: style
-    };
+    return { style };
   };
+
+  // Render event with tooltip
+  const Event = ({ event }) => (
+    <div data-tooltip-id="schedule-tooltip" data-tooltip-content={event.tooltip}>
+      {event.resource === 'sowing' ? <FaSeedling /> : <FaCut />} {event.title}
+    </div>
+  );
 
   return (
     <div className="schedule">
       <h2>Microgreens Planting and Harvesting Schedule</h2>
-      <div style={{ height: '500px' }}>
+      <p>Here’s a 3-month planting and harvesting guide for different microgreens.</p>
+      <div className="legend">
+        <span><FaSeedling style={{ color: '#2c5e1a' }} /> Sowing</span>
+        <span><FaCut style={{ color: '#f39c12' }} /> Harvesting</span>
+      </div>
+      <div className="calendar-container">
         <Calendar
           localizer={localizer}
           events={events}
@@ -86,8 +101,10 @@ function Schedule() {
           endAccessor="end"
           style={{ height: '100%' }}
           eventPropGetter={eventStyleGetter}
+          components={{ event: Event }}
         />
       </div>
+      <Tooltip id="schedule-tooltip" place="top" effect="solid" />
     </div>
   );
 }
