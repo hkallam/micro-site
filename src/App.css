@@ -1,38 +1,361 @@
+/* src/App.css */
+
+/* Global Styles */
+body {
+  font-family: 'Arial', sans-serif;
+  line-height: 1.6;
+  color: #333;
+  background-color: #f4f7f1;
+  margin: 0;
+  padding: 0;
+}
+
 .App {
-  text-align: center;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+}
+/* Header Styles */
+header {
+  background-color: #2c5e1a;
+  color: white;
+  padding: 1rem;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+/* .header-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+} */
+.header-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: relative;
+}
+.social-icons {
+  position: absolute;
+  top: 0;
+  right: 0;
+  display: flex;
+  gap: 10px;
+  padding: 10px;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
+.social-icons a {
+  color: white;
+  font-size: 1.5em;
+  transition: color 0.3s;
+}
+
+/* .social-icons a:hover {
+  color: #1DA1F2; // Instagram and WhatsApp icon hover color 
+} */
+header h1 {
+  margin: 0;
+  font-size: 1.5rem;
+}
+
+.menu-toggle {
+  display: none;
+  background: none;
+  border: none;
+  color: white;
+  font-size: 1.5rem;
+  cursor: pointer;
+}
+
+nav ul {
+  list-style-type: none;
+  padding: 0;
+  display: flex;
+  margin: 1rem 0 0 0;
+}
+
+nav ul li {
+  margin-right: 20px;
+}
+
+nav ul li:last-child {
+  margin-right: 0;
+}
+
+nav ul li a {
+  color: white;
+  text-decoration: none;
+  font-weight: bold;
+  display: flex;
+  align-items: center;
+}
+
+nav ul li a svg {
+  margin-right: 5px;
+}
+
+/* Responsive styles */
+@media (max-width: 768px) {
+  .header-content {
+    flex-wrap: wrap;
+  }
+
+  .menu-toggle {
+    display: block;
+  }
+
+  nav {
+    width: 100%;
+    display: none;
+  }
+
+  nav.open {
+    display: block;
+  }
+
+  nav ul {
+    flex-direction: column;
+  }
+
+  nav ul li {
+    margin: 10px 0;
   }
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+
+/* Product List Styles */
+.product-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  gap: 2rem;
+  padding: 2rem 0;
+}
+
+/* Product Item Styles */
+.product-item {
+  background-color: white;
+  border-radius: 8px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  transition: transform 0.3s ease;
+}
+
+.product-item:hover {
+  transform: translateY(-5px);
+}
+
+.product-item img {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+}
+
+.product-item h3 {
+  font-size: 1.2rem;
+  margin: 1rem;
+}
+
+.product-item p {
+  font-size: 1.1rem;
+  font-weight: bold;
+  color: #2c5e1a;
+  margin: 0 1rem;
+}
+
+.product-item button {
+  background-color: #2c5e1a;
+  color: white;
+  border: none;
+  padding: 0.5rem 1rem;
+  margin: 1rem;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.product-item button:hover {
+  background-color: #1e3f11;
+}
+
+/* Cart Styles */
+.cart {
+  background-color: white;
+  border-radius: 8px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  padding: 1rem;
+  margin-top: 2rem;
+}
+
+.cart h2 {
+  color: #2c5e1a;
+  border-bottom: 2px solid #2c5e1a;
+  padding-bottom: 0.5rem;
+}
+
+.cart ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+.cart li {
+  padding: 0.5rem 0;
+  border-bottom: 1px solid #eee;
+}
+
+.cart p {
+  font-weight: bold;
+  margin-top: 1rem;
+}
+
+.cart button {
+  background-color: #2c5e1a;
+  color: white;
+  border: none;
+  padding: 0.5rem 1rem;
+  margin-top: 1rem;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.cart button:hover {
+  background-color: #1e3f11;
+}
+
+.cart-items {
+  list-style-type: none;
+  padding: 0;
+}
+
+.cart-item {
   display: flex;
-  flex-direction: column;
+  justify-content: space-between;
   align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
+  padding: 10px 0;
+  border-bottom: 1px solid #eee;
+}
+
+.remove-item {
+  background: none;
+  border: none;
+  color: #e74c3c;
+  cursor: pointer;
+  font-size: 1rem;
+  transition: color 0.3s ease;
+}
+
+.remove-item:hover {
+  color: #c0392b;
+}
+
+/* Cart Link Styles */
+.cart-link {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  background-color: #2c5e1a;
+  color: white;
+  padding: 10px 15px;
+  border-radius: 5px;
+  z-index: 1000;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+  animation: fadeIn 0.3s;
+}
+
+.cart-link a {
+  color: white;
+  text-decoration: none;
+  font-weight: bold;
+  margin-left: 5px;
+}
+
+.cart-link a:hover {
+  text-decoration: underline;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .cart-link {
+    top: auto;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    white-space: nowrap;
+  }
+}
+/* Footer Styles */
+footer {
+  text-align: center;
+  margin-top: 2rem;
+  padding: 1rem;
+  background-color: #2c5e1a;
   color: white;
 }
 
-.App-link {
-  color: #61dafb;
+.cart form {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  margin-top: 1rem;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
+.cart input[type="text"],
+.cart input[type="email"],
+.cart input[type="date"] {
+  width: 100%;
+  padding: 0.5rem;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+.cart button[type="submit"] {
+  width: 100%;
+  padding: 0.5rem;
+  background-color: #2c5e1a;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.cart button[type="submit"]:hover {
+  background-color: #1e3f11;
+}
+
+/* Schedule Styles */
+.schedule {
+  padding: 2rem;
+}
+
+.schedule h2 {
+  color: #2c5e1a;
+  margin-bottom: 1rem;
+}
+
+/* Override react-big-calendar styles */
+.rbc-calendar {
+  background-color: white;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+}
+
+.rbc-header {
+  background-color: #2c5e1a;
+  color: white;
+}
+
+.rbc-event {
+  padding: 2px 5px !important;
+  border-radius: 3px !important;
+  font-size: 12px !important;
+}
+
+@media (max-width: 768px) {
+  .schedule {
+    padding: 1rem;
   }
 }
