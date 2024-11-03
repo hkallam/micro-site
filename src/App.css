@@ -94,9 +94,24 @@ nav ul li a svg {
 
 /* Responsive styles */
 @media (max-width: 768px) {
-  .header-content {
-    flex-wrap: wrap;
+  .social-icons {
+    position: static;
+    margin-top: 10px;
+    justify-content: center;
+    width: 100%;
   }
+
+  .social-icons a {
+    font-size: 1.2em; /* Slightly smaller icons on mobile */
+  }
+
+  .header-content {
+    flex-direction: column;
+    align-items: center;
+  }
+  /* .header-content {
+    flex-wrap: wrap;
+  } */
 
   .menu-toggle {
     display: block;
