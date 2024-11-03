@@ -1,8 +1,5 @@
 /* src/components/Home.css */
-.home {
-    text-align: center;
-    padding: 20px;
-  }
+
   
   .slick-slider {
     margin: 0 auto;
@@ -13,3 +10,71 @@
     width: 100%;
     height: auto;
   }
+
+  .home {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 2rem;
+    background-image: linear-gradient(135deg, #f3f4f6, #e5e7eb);
+    color: #333;
+    text-align: center;
+  }
+  
+  .home h1 {
+    font-size: 2.5rem;
+    font-weight: bold;
+    color: #3b82f6;
+    margin-bottom: 1rem;
+  }
+  
+  .home p {
+    font-size: 1.2rem;
+    max-width: 600px;
+    color: #374151;
+    margin-bottom: 2rem;
+  }
+  
+  .slider-container {
+    max-width: 800px;
+    margin-bottom: 2rem;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  }
+  
+  .slider-container img {
+    width: 100%;
+    height: auto;
+  }
+  
+  .home-button {
+    background-color: #10b981;
+    color: white;
+    padding: 0.8rem 1.5rem;
+    font-size: 1rem;
+    border-radius: 5px;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  .home-button:hover {
+    background-color: #059669;
+  }
+  
+  /* Responsive design */
+  @media (max-width: 768px) {
+    .home h1 {
+      font-size: 2rem;
+    }
+  
+    .home p {
+      font-size: 1rem;
+    }
+  
+    .slider-container {
+      max-width: 100%;
+    }
+  }
+  

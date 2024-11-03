@@ -3,7 +3,7 @@ import React from 'react';
 import Slider from 'react-slick';
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
-import './Home.css'
+import './Home.css';
 
 function Home() {
   const settings = {
@@ -13,15 +13,17 @@ function Home() {
     slidesToShow: 1,
     slidesToScroll: 1,
     autoplay: true,
-    autoplaySpeed: 3000
+    autoplaySpeed: 3000,
   };
 
   return (
     <div className="home">
       <h1>Locally Grown Microgreens</h1>
       <p>We are a small, local business dedicated to growing fresh microgreens. 
-        Our mission is to provide nutritious, high-quality greens to our community, delivered directly to your doorstep.</p>
-      <Slider {...settings}>
+         Our mission is to provide nutritious, high-quality greens to our community, delivered directly to your doorstep in and around Folsom.
+      </p>
+
+      <Slider {...settings} className="slider-container">
         <div>
           <img src="images/broccoli.jpg" alt="First slide" />
         </div>
@@ -32,6 +34,8 @@ function Home() {
           <img src="images/sunflower.jpg" alt="Third slide" />
         </div>
       </Slider>
+
+      <button className="home-button">Learn More</button>
     </div>
   );
 }
